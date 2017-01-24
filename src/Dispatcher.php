@@ -46,6 +46,7 @@ class Dispatcher
         }            
     }
 
+    // Split (/) url in array and store it in $this->result
     private function match($url){
         $pattern = '/\//';
         $url = trim($url,'\/');

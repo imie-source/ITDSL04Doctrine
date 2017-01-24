@@ -5,9 +5,10 @@ namespace Imie\Controller;
 
 use \Imie\View\View;
 
+// Parent controller
 class Controller{
 
-    private $em;
+    private $em; // doctrine object
 
     public function __construct($em){
         $this->em = $em;
@@ -17,9 +18,9 @@ class Controller{
         return $this->em;
     }
 
+    // Shortcut to render method
     public function render($folder, $file, $data = []){
         $view = new View($folder,$file);
         return $view->renderView($data);
     }
-
 }

@@ -4,6 +4,7 @@ namespace Imie\Controller;
 
 use \Imie\Entity\Product;
 
+// Used for test purpose
 class TestController extends Controller{
 
     public function indexAction(){

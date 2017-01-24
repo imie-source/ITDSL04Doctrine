@@ -7,23 +7,27 @@ use \Imie\Entity\Product;
 
 class ProductController extends Controller{
     
+    // List products
     public function indexAction(){
-
         return $this->render('product', 'index', [
-            "products" => $this->getDoctrine()
-                                ->getRepository('\\Imie\\Entity\\Product')
-                                ->findAll()
+            "products" => $this->getDoctrine() // returns a doctrine object
+                                ->getRepository('\\Imie\\Entity\\Product') // return a Product Repository
+                                ->findAll() // Return a Product Entity list
         ]);
     }
 
     public function addAction(){
         $msg = "";
+        // Check if we come from a form submission
         if(isset($_POST['name'])){
+            // new Product object
             $prod = new Product();
             $prod->setName(strip_tags($_POST['name']));
 
             $em = $this->getDoctrine();
-            $em->persist($prod);
+            // Tell Doctrine to take care of the $prod object
+            $em->persist($prod); 
+            // $prod is saved in database
             $em->flush();
 
             $msg = $prod->getName() ." a bien été inséré.";
