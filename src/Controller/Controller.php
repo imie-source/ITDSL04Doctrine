@@ -3,6 +3,8 @@
 
 namespace Imie\Controller;
 
+use \Imie\View\View;
+
 class Controller{
 
     private $em;
@@ -13,6 +15,11 @@ class Controller{
 
     public function getDoctrine(){
         return $this->em;
+    }
+
+    public function render($folder, $file, $data = []){
+        $view = new View($folder,$file);
+        return $view->renderView($data);
     }
 
 }

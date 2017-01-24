@@ -10,15 +10,15 @@ class TestController extends Controller{
 
         $em = $this->getDoctrine();
 
-        $product = new Product();
-        $product->setName("Android 7");
+        $repo = $em->getRepository('\\Imie\\Entity\\Product');
 
-        $em->persist($product);
+        $products = $repo->findAll();
 
-        $em->flush();
+        var_dump($products);
 
-        echo "Nouveau produit inséré :";
-        var_dump($product);      
+
+       
+
     }
 
 }
