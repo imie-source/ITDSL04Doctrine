@@ -15,10 +15,6 @@ class TestController extends Controller{
         $products = $repo->findAll();
 
         var_dump($products);
-
-
-       
-
     }
 
 }

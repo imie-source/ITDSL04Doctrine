@@ -6,6 +6,15 @@ namespace Imie\Controller;
 use \Imie\Entity\Product;
 
 class ProductController extends Controller{
+    
+    public function indexAction(){
+
+        return $this->render('product', 'index', [
+            "products" => $this->getDoctrine()
+                                ->getRepository('\\Imie\\Entity\\Product')
+                                ->findAll()
+        ]);
+    }
 
     public function addAction(){
         $msg = "";
