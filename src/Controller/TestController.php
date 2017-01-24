@@ -2,10 +2,10 @@
 
 namespace Imie\Controller;
 
-class TestController{
+class TestController extends Controller{
 
     public function indexAction(){
-        var_dump('OK');
+        
     }
 
 }

@@ -5,7 +5,7 @@ namespace Imie\Controller;
 
 use \Imie\View\View;
 
-class DefaultController
+class DefaultController extends Controller
 {
     public function indexAction(){
         $view = new View('default','index');

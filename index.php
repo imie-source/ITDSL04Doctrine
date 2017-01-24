@@ -10,7 +10,7 @@ define('_PUBLIC_PATH_', __DIR__ .'\\public\\');
 
 const PATH = __DIR__;
 
-$dispatch = new Dispatcher();
+$dispatch = new Dispatcher($em);
 echo $dispatch->dispatch();
 
 

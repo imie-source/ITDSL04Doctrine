@@ -11,12 +11,14 @@ class Dispatcher
     private $method;
     private $result;
     private $defControl;
+    private $em;
 
-    public function __construct()
+    public function __construct($em)
     {
+        $this->em = $em; // <-- Doctrine object
         $this->url = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : null;
         $this->method = $_SERVER['REQUEST_METHOD'];
-        $this->defControl = new DefaultController();
+        $this->defControl = new DefaultController($this->em);
     }
 
     public function dispatch()
@@ -29,7 +31,8 @@ class Dispatcher
                 $controller = '\\Imie\\Controller\\' . ucfirst($this->result[0]) . 'Controller';
                 $action = $this->result[1] . 'Action';
                 if (file_exists($path)) {
-                    $theController = new $controller();
+                    // Don't forget to give Doctrine to the controller
+                    $theController = new $controller($this->em);
                     if (method_exists($theController, $action)) {
                         $flag = false;
                         return $theController->$action($this->result);
