@@ -1,0 +1,17 @@
+{
+    "name": "imie-gab/itsdl04doctrine",
+    "description": "Doctrine getting started",
+    "require": {
+        "doctrine/orm": "^2.5",
+        "symfony/yaml": "^3.2"
+    },
+    "authors": [
+        {
+            "name": "Gabriel Block",
+            "email": "gabriel.block@imie.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Imie\\": "src/"}
+    }
+}
