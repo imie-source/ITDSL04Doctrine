@@ -27,7 +27,7 @@ class Dispatcher
         if(!is_null($this->url)){
             $this->match($this->url);
             if(isset($this->result[0]) && isset($this->result[1])) {
-                $path = __DIR__ . '\\Controller\\' . ucfirst($this->result[0]) . 'Controller.php';
+                $path = __DIR__ . DIRECTORY_SEPARATOR .'Controller' . DIRECTORY_SEPARATOR . ucfirst($this->result[0]) . 'Controller.php';
                 $controller = '\\Imie\\Controller\\' . ucfirst($this->result[0]) . 'Controller';
                 $action = $this->result[1] . 'Action';
                 if (file_exists($path)) {

@@ -16,6 +16,23 @@ class ProductController extends Controller{
         ]);
     }
 
+    // Remove a product with id passed in url
+    public function removeAction($args){
+        $em = $this->getDoctrine();
+        $repo = $em->getRepository('\Imie\Entity\Product');
+
+        $prod = $repo->find($args[2]);
+
+        if(isset($prod)){
+            $em->remove($prod);
+            $em->flush();
+        }
+
+        header('Location: ' . PATH . '/index.php/product/index');
+
+    }
+
+    // Add form & submission
     public function addAction(){
         $msg = "";
         // Check if we come from a form submission

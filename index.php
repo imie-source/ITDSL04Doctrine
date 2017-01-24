@@ -8,7 +8,8 @@ require_once "bootstrap.php";
 
 define('_PUBLIC_PATH_', __DIR__ .'\\public\\');
 
-const PATH = '/ITSDL04Doctrine';
+$path = explode(DIRECTORY_SEPARATOR, __DIR__);
+define('PATH', '/' . $path[sizeof($path)-1]);
 
 $dispatch = new Dispatcher($em);
 echo $dispatch->dispatch();
