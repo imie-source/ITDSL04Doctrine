@@ -16,7 +16,7 @@ class Dispatcher
     public function __construct($em)
     {
         $this->em = $em; // <-- Doctrine object
-        $this->url = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : null;
+        $this->url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : null;
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->defControl = new DefaultController($this->em);
     }
@@ -26,10 +26,10 @@ class Dispatcher
         $flag = true;
         if(!is_null($this->url)){
             $this->match($this->url);
-            if(isset($this->result[0]) && isset($this->result[1])) {
-                $path = __DIR__ . DIRECTORY_SEPARATOR .'Controller' . DIRECTORY_SEPARATOR . ucfirst($this->result[0]) . 'Controller.php';
-                $controller = '\\Imie\\Controller\\' . ucfirst($this->result[0]) . 'Controller';
-                $action = $this->result[1] . 'Action';
+            if(isset($this->result[2]) && isset($this->result[3])) {
+                $path = __DIR__ . DIRECTORY_SEPARATOR .'Controller' . DIRECTORY_SEPARATOR . ucfirst($this->result[2]) . 'Controller.php';
+                $controller = '\\Imie\\Controller\\' . ucfirst($this->result[2]) . 'Controller';
+                $action = $this->result[3] . 'Action';
                 if (file_exists($path)) {
                     // Don't forget to give Doctrine to the controller
                     $theController = new $controller($this->em);
