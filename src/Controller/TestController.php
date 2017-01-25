@@ -17,12 +17,10 @@ class TestController extends Controller{
 
         $bug = new Bug();
 
-        $bug->setDescription("Plus rien ne marche...");
-
-        $bug->setReporter($userRepo->find(1));
-        $bug->setEngineer($userRepo->find(2));
-
-        $bug->addProduct($productRepo->find(1));
+        $bug->setDescription("Plus rien ne marche...")
+            ->setReporter($userRepo->find(1))
+            ->setEngineer($userRepo->find(2))
+            ->addProduct($productRepo->find(1));
 
         $em->persist($bug);
 
