@@ -79,10 +79,12 @@
                 </td>          
                 <td>
                     <?= $bug->getCreated()->format('d/m/Y H:i:s') ?>
-                </td>           
-                <td>
-                    <?= $bug->getStatus() ?>
                 </td>          
+                <td>
+                    <a href="<?= PATH . '/index.php/bug/change/' . $bug->getId() ?>">
+                        <?= $bug->getStatus() ?>
+                    </a>
+                </td>             
             </tr>
         <?php endforeach; ?>
     </table>

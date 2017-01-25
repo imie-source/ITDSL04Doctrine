@@ -17,6 +17,32 @@ class BugController extends Controller{
         ]);
     }
 
+    public function changeAction($args){
+        $em = $this->getDoctrine();
+        $bugRepo = $em->getRepository('Imie\Entity\Bug');
+
+        $bug = $bugRepo->find($args[2]);
+
+        // If bug can't be found, redirect'
+        if(is_null($bug)){
+            header('Location: ' . PATH . 'index.php');
+            return;
+        }
+
+        // Change status
+        if($bug->getStatus() === 'Ouvert'){
+            $bug->close();
+        }
+        else{
+            $bug->open();
+        }
+
+        // Change in database
+        $em->flush();
+
+        header('Location: ' . $_SERVER["HTTP_REFERER"]); // Back to previous page
+    }
+
     // Add form & submission
     public function addAction($args){
         $bug = new Bug();
