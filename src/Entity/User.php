@@ -46,11 +46,11 @@ class User{
     }
 
     public function getReportedBugs(){
-        return $reportedBugs;
+        return $this->reportedBugs;
     }
 
     public function getAssignedBugs(){
-        return $assignedBugs;
+        return $this->assignedBugs;
     }
 
     public function getId(){
