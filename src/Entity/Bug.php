@@ -3,6 +3,8 @@
 
 namespace Imie\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
 * @Entity
 * @Table(name="bugs")
@@ -39,6 +41,21 @@ class Bug{
     * @ManyToOne(targetEntity="User", inversedBy="assignedBugs")
     **/
     private $engineer;
+
+    /** 
+    * @ManyToMany(targetEntity="Product")
+    **/
+    private $products;
+
+    public function __construct(){
+        $this->products = new ArrayCollection();
+        $this->created = new \DateTime();
+        $this->status = "Ouvert";
+    }
+
+    public function addProduct(Product $product){
+        $this->products[] = $product;
+    }
 
     public function setReporter(User $user){
         $user->addReportedBug($this);
@@ -86,8 +103,13 @@ class Bug{
         return $this;
     }
 
-    public function setStatus($status){
-        $this->status = $status;
+    public function close(){
+        $this->status = "Fermé";
+        return $this;
+    }
+
+    public function open(){
+        $this->status = "Ouvert";
         return $this;
     }
 }
