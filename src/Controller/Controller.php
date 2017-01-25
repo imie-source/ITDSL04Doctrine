@@ -4,6 +4,7 @@
 namespace Imie\Controller;
 
 use \Imie\View\View;
+use \Imie\Service\FlashBag;
 
 // Parent controller
 class Controller{
@@ -22,5 +23,9 @@ class Controller{
     public function render($folder, $file, $data = []){
         $view = new View($folder,$file);
         return $view->renderView($data);
+    }
+
+    public function getFlashBag(){
+        return FlashBag::getInstance();
     }
 }
