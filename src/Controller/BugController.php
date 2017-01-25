@@ -9,7 +9,12 @@ use \Imie\Entity\Product;
 class BugController extends Controller{
 
     public function indexAction(){
-        
+        $em = $this->getDoctrine();
+        $bugRepo = $em->getRepository('Imie\Entity\Bug');
+
+        return $this->render('bug', 'index', [
+            "bugs" => $bugRepo->findAll() // fetch all bugs
+        ]);
     }
 
     // Add form & submission
