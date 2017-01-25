@@ -8,7 +8,11 @@
     <?php foreach($users as $user): ?>
         <tr>
             <td><?= $user->getId() ?></td>
-            <td><?= $user->getName() ?></td>            
+            <td>
+                <a href="<?= PATH . '/index.php/user/detail/' . $user->getId() ?>">
+                    <?= $user->getName() ?>
+                </a>
+            </td>            
             <td>
                 <a href="<?= PATH . '/index.php/user/remove/'. $user->getId() ?>" class="btn btn-danger">
                     <i class="fa fa-trash"></i>

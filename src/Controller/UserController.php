@@ -71,4 +71,22 @@ class UserController extends Controller{
 
     }
 
+    // Show users detail
+    public function detailAction($args){
+        $em = $this->getDoctrine();
+        $repo = $em->getRepository('\Imie\Entity\User');
+
+        // Find user in repository
+        $user = $repo->find($args[2]);
+
+        // Redirection if user does not exists
+        if(!isset($user)){
+            header('Location: ' . PATH . '/index.php/user/index');
+        }
+
+        // render user detail view
+        return $this->render('user', 'detail', [
+            "user" => $user
+        ]); 
+    }
 }
