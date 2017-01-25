@@ -20,6 +20,7 @@
 <nav class="btn-group">
     <a href="<?= PATH . '/index.php' ?>" class="btn btn-default">Accueil</a>
     <a href="<?= PATH . '/index.php/product/index' ?>" class="btn btn-default">Liste des produits</a>
+    <a href="<?= PATH . '/index.php/user/index' ?>" class="btn btn-default">Liste des utilisateurs</a>
 </nav>
 <hr>
 <main>
