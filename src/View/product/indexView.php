@@ -13,7 +13,7 @@
                 <a href="<?= PATH . '/index.php/product/remove/'. $product->getId() ?>" class="btn btn-danger">
                     <i class="fa fa-trash"></i>
                 </a>
-                <a href="" class="btn btn-info">
+                <a href="<?= PATH . '/index.php/product/add/' . $product->getId() ?>" class="btn btn-info">
                     <i class="fa fa-pencil"></i>
                 </a>
             </td>            

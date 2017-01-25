@@ -26,7 +26,6 @@ class Dispatcher
         $flag = true;
         if(!is_null($this->url)){
             $this->match($this->url);
-            var_dump($this->result);die;
             if(isset($this->result[0]) && isset($this->result[1])) {
                 $path = __DIR__ . DIRECTORY_SEPARATOR .'Controller' . DIRECTORY_SEPARATOR . ucfirst($this->result[0]) . 'Controller.php';
                 $controller = '\\Imie\\Controller\\' . ucfirst($this->result[0]) . 'Controller';
