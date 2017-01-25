@@ -37,6 +37,7 @@ class BugController extends Controller{
             $bug->setDescription(htmlentities($_POST['description']))
                 ->setEngineer($userRepo->find($_POST['engineer']))
                 ->setReporter($userRepo->find($_POST['reporter']));
+            // Add each products
             foreach($_POST['products'] as $product){
                 $bug->addProduct($productRepo->find($product));
             }
