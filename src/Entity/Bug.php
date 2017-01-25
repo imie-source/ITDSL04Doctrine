@@ -1,7 +1,7 @@
 <?php
 // ./src/Entity/Bug.php
 
-namespace Entity;
+namespace Imie\Entity;
 
 /**
 * @Entity
@@ -29,6 +29,36 @@ class Bug{
     * @Column(type="string")
     **/
     private $status;
+
+    /**
+    * @ManyToOne(targetEntity="User", inversedBy="reportedBugs")
+    **/
+    private $reporter;
+
+    /**
+    * @ManyToOne(targetEntity="User", inversedBy="assignedBugs")
+    **/
+    private $engineer;
+
+    public function setReporter(User $user){
+        $user->addReportedBug($this);
+        $this->reporter = $user;
+        return $this;
+    }
+
+    public function setEngineer(User $user){
+        $user->assignToBug($this);
+        $this->engineer = $user;
+        return $this;
+    }
+
+    public function getReporter(){
+        return $this->reporter;
+    }
+
+    public function getEngineer(){
+        return $this->engineer;
+    }
 
     public function getId(){
         return $this->id;
