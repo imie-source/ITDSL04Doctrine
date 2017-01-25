@@ -1,4 +1,4 @@
-<a href="<?= PATH ?>/index.php/product/add">Ajouter un produit</a>
+<a href="<?= PATH ?>/index.php/product/add" class="btn btn-success">Ajouter un produit</a>
 <table class="table">
     <tr>
         <th>Id</th>

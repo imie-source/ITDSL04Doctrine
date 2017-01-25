@@ -1,1 +1,1 @@
-Si vous êtes ici, il y a un problème.
+<h2>Bug Tracker</h2>

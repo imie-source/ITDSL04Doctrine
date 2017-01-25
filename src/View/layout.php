@@ -17,6 +17,11 @@
     <h1>Bienvenue dans un monde merveilleux</h1>
 </header>
 <hr>
+<nav class="btn-group">
+    <a href="<?= PATH . '/index.php' ?>" class="btn btn-default">Accueil</a>
+    <a href="<?= PATH . '/index.php/product/index' ?>" class="btn btn-default">Liste des produits</a>
+</nav>
+<hr>
 <main>
     <div>
         <?php echo $content ?>
