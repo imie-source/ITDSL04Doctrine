@@ -62,8 +62,7 @@ class ProductController extends Controller{
                 header('Location: ' . PATH . '/index.php');
             }
         }
-        
-        $msg = "";
+
         // Check if we come from a form submission
         if(isset($_POST['name'])){
             // new Product object
@@ -73,11 +72,13 @@ class ProductController extends Controller{
             // $prod is saved in database
             $em->flush();
 
+            $this->getFlashBag()->addSuccess($prod->getName() . " a bien été " . ($modif ? "modifié." : "sauvegardé."));
+
             header('Location: ' . PATH . '/index.php/product/index');
+            die();
         }
 
         return $this->render('product', 'form', [
-            "msg" => $msg,
             "product" => $prod
         ]);
     }

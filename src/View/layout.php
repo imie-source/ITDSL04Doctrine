@@ -16,20 +16,27 @@
 <header>
     <h1>Bienvenue dans un monde merveilleux</h1>
 </header>
-<hr>
+<hr/>
 <nav class="btn-group">
     <a href="<?= PATH . '/index.php' ?>" class="btn btn-default">Accueil</a>
     <a href="<?= PATH . '/index.php/product/index' ?>" class="btn btn-default">Liste des produits</a>
     <a href="<?= PATH . '/index.php/user/index' ?>" class="btn btn-default">Liste des utilisateurs</a>
     <a href="<?= PATH . '/index.php/bug/index' ?>" class="btn btn-default">Liste des bugs</a>
 </nav>
-<hr>
+<aside>
+    <?php
+        foreach($flashbag->getMessages() as $message){
+            echo '<div class="alert alert-' . $message["type"] . '">' . $message["text"] . '</div>';
+        }
+    ?>
+</aside>
+<hr/>
 <main>
     <div>
         <?php echo $content ?>
     </div>
 </main>
-<hr>
+<hr/>
 <footer>
     Tous droits réservés pour IMIE
 </footer>

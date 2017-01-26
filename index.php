@@ -1,7 +1,9 @@
 <?php
 // index.php
+session_start();
 
 use Imie\Dispatcher;
+use Imie\Service\FlashBag;
 
 require_once "vendor/autoload.php";
 require_once "bootstrap.php";
@@ -13,7 +15,3 @@ define('PATH', '/' . $path[sizeof($path)-1]);
 
 $dispatch = new Dispatcher($em);
 echo $dispatch->dispatch();
-
-
-
-

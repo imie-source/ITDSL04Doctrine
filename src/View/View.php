@@ -3,6 +3,8 @@
 
 namespace Imie\View;
 
+use Imie\Service\FlashBag;
+
 class View
 {
     private $file;
@@ -12,22 +14,27 @@ class View
         $this->file = "./src/View/".$nameFolder."/".$nameFile."View.php";
     }
 
-    public function renderView($datas){
+    public function renderView($datas){ 
         $content = $this->generateFile($this->file,$datas);
-        return $this->generateFile('./src/View/layout.php', ['content'=>$content]);
+        $html = $this->generateFile('./src/View/layout.php', ['content'=>$content]);
+
+        FlashBag::getInstance()->clean();
+        return $html;
     }
 
     private function generateFile($view, $datas){
+        
         if(file_exists($view)){
-            if(isset($datas)){
+            if(isset($datas)){       
+                $flashbag = FlashBag::getInstance();
                 extract($datas);
                 ob_start();
-                require_once ($view);
+                require ($view);
                 return ob_get_clean();
-
             }
         }else{
-            throw new \Exception("le fichier $view est introuvable mon lapin...");
+            throw new \Exception("le fichier $view est introuvable...");
         }
+        
     }
 }
