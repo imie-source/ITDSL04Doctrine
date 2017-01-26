@@ -77,7 +77,9 @@ class UserController extends Controller{
         $repo = $em->getRepository('\Imie\Entity\User');
 
         // Find user in repository
-        $user = $repo->find($args[2]);
+        // $user = $repo->find((int)$args[2]);
+
+        $user = $repo->getUserWithBugsQB($args[2]);
 
         // Redirection if user does not exists
         if(!isset($user)){
