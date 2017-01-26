@@ -27,6 +27,6 @@ class UserRepository extends EntityRepository{
                     ->where('u.id = :id')
                     ->setParameter('id', $id)
                     ->getQuery()
-                    ->getSingleResult();
+                    ->getOneOrNullResult();
     }
 }

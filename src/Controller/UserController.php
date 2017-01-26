@@ -42,6 +42,7 @@ class UserController extends Controller{
             $em->persist($user); 
             // $user is saved in database
             $em->flush();
+            $this->getFlashBag()->addSuccess($user->getName() . " a bien été " . ($modif ? "modifié." : "sauvegardé."));
 
             header('Location: ' . PATH . '/index.php/user/index');
             return;
@@ -64,6 +65,7 @@ class UserController extends Controller{
         if(isset($user)){
             $em->remove($user);
             $em->flush();
+            $this->getFlashBag()->addSuccess($user->getName() . " a bien été supprimé.");
         }
 
         // users list redirection
@@ -83,7 +85,9 @@ class UserController extends Controller{
 
         // Redirection if user does not exists
         if(!isset($user)){
+            $this->getFlashBag()->addError("L'utilisateur n'existe pas.");
             header('Location: ' . PATH . '/index.php/user/index');
+            die();
         }
 
         // render user detail view

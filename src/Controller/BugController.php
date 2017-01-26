@@ -32,9 +32,11 @@ class BugController extends Controller{
         // Change status
         if($bug->getStatus() === 'Ouvert'){
             $bug->close();
+            $this->getFlashBag()->addSuccess('Le bug a bien été fermé.');
         }
         else{
             $bug->open();
+            $this->getFlashBag()->addSuccess('Le bug a bien été ouvert.');
         }
 
         // Change in database
@@ -47,7 +49,7 @@ class BugController extends Controller{
     public function addAction($args){
         $bug = new Bug();
         $em = $this->getDoctrine();
-        // $modif = isset($args[2]);
+        $modif = isset($args[2]);
 
         $userRepo = $em->getRepository('Imie\Entity\User');
         $productRepo = $em->getRepository('Imie\Entity\Product');
@@ -74,8 +76,10 @@ class BugController extends Controller{
             }
             // Tell Doctrine to take care of the $user object
             $em->persist($bug); 
-            // $user is saved in database
+            // $bug is saved in database
             $em->flush();
+
+            $this->getFlashBag()->addSuccess("Le bug n°" . $bug->getId() . " a bien été " . ($modif ? "modifié." : "sauvegardé."));
 
             header('Location: ' . PATH . '/index.php/bug/index');
             return;

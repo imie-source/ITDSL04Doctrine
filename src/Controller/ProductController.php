@@ -42,6 +42,7 @@ class ProductController extends Controller{
         if(isset($prod)){
             $em->remove($prod);
             $em->flush();
+            $this->getFlashBag()->addSuccess($prod->getName() . " a bien été supprimé.");
         }
 
         header('Location: ' . PATH . '/index.php/product/index');
