@@ -42,5 +42,3 @@
 </footer>
 </body>
 </html>
-
-<?php var_dump($flashbag->getMessages()); //$flashbag->clear(); ?>

@@ -17,9 +17,10 @@ class View
     public function renderView($datas){ 
         $content = $this->generateFile($this->file,$datas);
         $html = $this->generateFile('./src/View/layout.php', ['content'=>$content]);
+        ob_end_clean();
 
-        var_dump(FlashBag::getInstance()->getMessages());
-        FlashBag::getInstance()->clear();
+        FlashBag::getInstance()->clean();
+
         return $html;
     }
 
@@ -30,7 +31,7 @@ class View
                 $flashbag = FlashBag::getInstance();
                 extract($datas);
                 ob_start();
-                require_once ($view);
+                require ($view);
                 return ob_get_clean();
             }
         }else{

@@ -47,20 +47,20 @@ class BugController extends Controller{
     public function addAction($args){
         $bug = new Bug();
         $em = $this->getDoctrine();
-        $modif = isset($args[2]);
+        // $modif = isset($args[2]);
 
         $userRepo = $em->getRepository('Imie\Entity\User');
         $productRepo = $em->getRepository('Imie\Entity\Product');
 
-        if($modif){
-            $bugRepo = $em->getRepository('Imie\Entity\Bug');
-            $bug = $bugRepo->find($args[2]);
+        // if($modif){
+        //     $bugRepo = $em->getRepository('Imie\Entity\Bug');
+        //     $bug = $bugRepo->find($args[2]);
 
-            if(is_null($bug)){
-                header('Location: ' . PATH . '/index.php');
-                return;
-            }
-        }
+        //     if(is_null($bug)){
+        //         header('Location: ' . PATH . '/index.php');
+        //         return;
+        //     }
+        // }
         
         // Check if we come from a form submission
         if(isset($_POST['description'], $_POST['engineer'], $_POST['reporter'], $_POST['products'])){
