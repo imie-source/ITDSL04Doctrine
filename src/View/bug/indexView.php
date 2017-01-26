@@ -31,10 +31,14 @@
                     ?>
                 </td>
                 <td>
-                    <?= $bug->getReporter()->getName() ?>
+                    <a href="<?= PATH . '/index.php/user/detail/' . $bug->getReporter()->getId() ?>">
+                        <?= $bug->getReporter()->getName() ?>
+                    </a>
                 </td>      
                 <td>
-                    <?= $bug->getEngineer()->getName() ?>
+                    <a href="<?= PATH . '/index.php/user/detail/' . $bug->getEngineer()->getId() ?>">
+                        <?= $bug->getEngineer()->getName() ?>
+                    </a>
                 </td>          
                 <td>
                     <?= $bug->getCreated()->format('d/m/Y H:i:s') ?>
