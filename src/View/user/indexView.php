@@ -1,4 +1,5 @@
 <a href="<?= PATH ?>/index.php/user/add" class="btn btn-success">Ajouter un utilisateur</a>
+<h3>Liste des utilisateurs</h3>
 <table class="table">
     <tr>
         <th>Id</th>

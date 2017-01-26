@@ -1,4 +1,5 @@
 <a href="<?= PATH ?>/index.php/product/add" class="btn btn-success">Ajouter un produit</a>
+<h3>Liste des produits</h3>
 <table class="table">
     <tr>
         <th>Id</th>
