@@ -18,7 +18,6 @@ class View
         $content = $this->generateFile($this->file,$datas);
         $html = $this->generateFile('./src/View/layout.php', ['content'=>$content]);
 
-        FlashBag::getInstance()->clean();
         return $html;
     }
 

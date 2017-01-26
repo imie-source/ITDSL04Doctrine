@@ -28,6 +28,7 @@
         foreach($flashbag->getMessages() as $message){
             echo '<div class="alert alert-' . $message["type"] . '">' . $message["text"] . '</div>';
         }
+        $flashbag->clean();
     ?>
 </aside>
 <hr/>
