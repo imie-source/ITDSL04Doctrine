@@ -6,7 +6,7 @@ namespace Imie\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
-* @Entity
+* @Entity(repositoryClass="UserRepository")
 * @Table(name="users")
 **/
 class User{
