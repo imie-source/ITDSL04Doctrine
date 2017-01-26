@@ -1,5 +1,5 @@
-<h2><?= $user->getId() ? "Modification" : "Ajout" ?> d'un utilisateur :</h2>
-<a href="<?= PATH ?>/index.php/user/index">Retour à la liste</a>
+<a href="<?= PATH ?>/index.php/user/index" class="btn btn-default">Retour à la liste</a>
+<h3><?= $user->getId() ? "Modification" : "Ajout" ?> d'un utilisateur :</h3>
 <form method="POST">
     <input type="hidden" name="id" value="<?= $user->getId()?>" />
     <label>

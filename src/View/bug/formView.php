@@ -1,5 +1,5 @@
-<h2><?= $bug->getId() ? "Modification" : "Ajout" ?> d'un bug :</h2>
-<a href="<?= PATH ?>/index.php/bug/index">Retour à la liste</a>
+<a href="<?= PATH ?>/index.php/bug/index" class="btn btn-default">Retour à la liste</a>
+<h2><?= $bug->getId() ? "Modification" : "Ajout" ?> d'un bug</h2>
 <form method="POST">
     <input type="hidden" name="id" value="<?= $bug->getId()?>" />
     <div class="form-group">

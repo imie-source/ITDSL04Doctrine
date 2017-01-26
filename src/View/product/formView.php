@@ -1,5 +1,5 @@
-<h2><?= $product->getId() ? "Modification" : "Ajout" ?> d'un produit :</h2>
-<a href="<?= PATH ?>/index.php/product/index">Retour à la liste</a>
+<a href="<?= PATH ?>/index.php/product/index" class="btn btn-default">Retour à la liste</a>
+<h3><?= $product->getId() ? "Modification" : "Ajout" ?> d'un produit</h3>
 <form method="POST">
     <?php if(!empty($msg)): ?>
         <div class="alert alert-success">
