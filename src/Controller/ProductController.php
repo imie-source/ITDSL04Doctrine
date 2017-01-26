@@ -59,6 +59,7 @@ class ProductController extends Controller{
             $this->getFlashBag()->addSuccess($prod->getName() . " a bien été " . ($modif ? "modifié." : "sauvegardé."));
 
             header('Location: ' . PATH . '/index.php/product/index');
+            die();
         }
 
         return $this->render('product', 'form', [

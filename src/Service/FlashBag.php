@@ -47,7 +47,7 @@ class FlashBag{
 
     public function clean(){
         $cleared = $_SESSION['flashbag'];
-        unset($_SESSION['flashbag']);
+        $_SESSION['flashbag'] = [];
 
         return $cleared;
     }

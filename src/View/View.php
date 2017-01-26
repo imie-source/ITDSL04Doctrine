@@ -17,10 +17,8 @@ class View
     public function renderView($datas){ 
         $content = $this->generateFile($this->file,$datas);
         $html = $this->generateFile('./src/View/layout.php', ['content'=>$content]);
-        ob_end_clean();
 
         FlashBag::getInstance()->clean();
-
         return $html;
     }
 
