@@ -3,8 +3,10 @@
 
 namespace Imie\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
-* @Entity
+* @Entity(repositoryClass="ProductRepository")
 * @Table(name="products")
 **/
 class Product{
@@ -19,6 +21,23 @@ class Product{
     * @Column(type="string")
     **/
     private $name;
+
+    /** 
+    * @ManyToMany(targetEntity="Bug", mappedBy="products")
+    **/    
+    private $bugs;
+
+    public function __construct(){
+        $this->products = new ArrayCollection();
+    }
+
+    public function getBugs(){
+        return $this->bugs;
+    }
+
+    public function addBug(Bug $bug){
+        $this->bugs[] = $bug;
+    }
 
     public function getId(){
         return $this->id;

@@ -24,7 +24,9 @@ class ProductController extends Controller{
         $product = $repo->find($args[2]);
 
         if(is_null($product)){
+            $this->getFlashBag()->addError("Ce produit n'existe pas.");
             header('Location: ' . PATH . '/index.php');
+            die();
         }
 
         return $this->render('product', 'detail', [

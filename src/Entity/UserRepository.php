@@ -20,13 +20,20 @@ class UserRepository extends EntityRepository{
 
     public function getUserWithBugsQB($id){
         return $this->createQueryBuilder('u')
-                    ->addSelect('a')
-                    ->addSelect('r')
-                    ->leftJoin('u.assignedBugs', 'a')
-                    ->leftJoin('u.reportedBugs', 'r')
-                    ->where('u.id = :id')
-                    ->setParameter('id', $id)
-                    ->getQuery()
-                    ->getOneOrNullResult();
+            ->addSelect('a')
+            ->addSelect('r')
+            ->leftJoin('u.assignedBugs', 'a')
+            ->leftJoin('u.reportedBugs', 'r')
+            ->where('u.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function getAllUsersOrdered(){
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.name')
+            ->getQuery()
+            ->getResult();
     }
 }

@@ -43,7 +43,7 @@ class Bug{
     private $engineer;
 
     /** 
-    * @ManyToMany(targetEntity="Product")
+    * @ManyToMany(targetEntity="Product", inversedBy="bugs")
     **/
     private $products;
 

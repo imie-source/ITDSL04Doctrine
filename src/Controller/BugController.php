@@ -32,11 +32,11 @@ class BugController extends Controller{
         // Change status
         if($bug->getStatus() === 'Ouvert'){
             $bug->close();
-            $this->getFlashBag()->addSuccess('Le bug a bien été fermé.');
+            $this->getFlashBag()->addSuccess('Le bug est maintenant fermé.');
         }
         else{
             $bug->open();
-            $this->getFlashBag()->addSuccess('Le bug a bien été ouvert.');
+            $this->getFlashBag()->addSuccess('Le bug est maintenant ouvert.');
         }
 
         // Change in database
@@ -87,7 +87,7 @@ class BugController extends Controller{
 
         return $this->render('bug', 'form', [
             "bug" => $bug,
-            "users" => $userRepo->findAll(),
+            "users" => $userRepo->getAllUsersOrdered(),
             "products" => $productRepo->findAll()
         ]);
     }
