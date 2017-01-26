@@ -16,6 +16,22 @@ class ProductController extends Controller{
         ]);
     }
 
+    public function detailAction($args){
+        $em = $this->getDoctrine();
+
+        $repo = $em->getRepository('\Imie\Entity\Product');
+
+        $product = $repo->find($args[2]);
+
+        if(is_null($product)){
+            header('Location: ' . PATH . '/index.php');
+        }
+
+        return $this->render('product', 'detail', [
+            "product" => $product            
+        ]);
+    }
+
     // Remove a product with id passed in url
     public function removeAction($args){
         $em = $this->getDoctrine();

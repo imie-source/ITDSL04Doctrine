@@ -8,7 +8,11 @@
     <?php foreach($products as $product): ?>
         <tr>
             <td><?= $product->getId() ?></td>
-            <td><?= $product->getName() ?></td>            
+            <td>
+                <a href="<?= PATH . '/index.php/product/detail/' . $product->getId() ?>">
+                    <?= $product->getName() ?>
+                </a>
+            </td>            
             <td>
                 <a href="<?= PATH . '/index.php/product/remove/'. $product->getId() ?>" class="btn btn-danger">
                     <i class="fa fa-trash"></i>
