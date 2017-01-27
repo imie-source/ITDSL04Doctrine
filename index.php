@@ -3,7 +3,6 @@
 session_start();
 
 use Imie\Dispatcher;
-use Imie\Service\FlashBag;
 
 require_once "vendor/autoload.php";
 require_once "bootstrap.php";
