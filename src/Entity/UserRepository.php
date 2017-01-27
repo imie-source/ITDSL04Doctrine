@@ -20,10 +20,10 @@ class UserRepository extends EntityRepository{
 
     public function getUserWithBugsQB($id){
         return $this->createQueryBuilder('u')
-            ->addSelect('a')
-            ->addSelect('r')
             ->leftJoin('u.assignedBugs', 'a')
             ->leftJoin('u.reportedBugs', 'r')
+            ->leftJoin('a.products', 'ap')
+            ->leftJoin('r.products', 'rp')
             ->where('u.id = :id')
             ->setParameter('id', $id)
             ->getQuery()

@@ -1,7 +1,7 @@
 <a href="<?= PATH ?>/index.php/bug/add" class="btn btn-success">Ajouter un bug</a>
 <h3>Liste des bugs</h3>
 <?php if(empty($bugs)): ?>
-    <p class="alert alert-info">Aucun bug</p>
+    <p class="alert alert-info">Aucun bug.</p>
 <?php else: ?>
     <table class="table">
         <tr>

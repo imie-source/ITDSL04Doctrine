@@ -81,7 +81,7 @@
                     <?= $bug->getCreated()->format('d/m/Y H:i:s') ?>
                 </td>          
                 <td>
-                    <a href="<?= PATH . '/index.php/bug/change/' . $bug->getId() ?>">
+                    <a class="btn btn-<?= $bug->getStatus() === 'Ouvert' ? 'success' : 'default' ?>" href="<?= PATH . '/index.php/bug/change/' . $bug->getId() ?>">
                         <?= $bug->getStatus() ?>
                     </a>
                 </td>             

@@ -21,7 +21,7 @@ class ProductController extends Controller{
 
         $repo = $em->getRepository('\Imie\Entity\Product');
 
-        $product = $repo->find($args[2]);
+        $product = $repo->getProductWithBugs($args[2]);
 
         if(is_null($product)){
             $this->getFlashBag()->addError("Ce produit n'existe pas.");

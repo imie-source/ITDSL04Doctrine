@@ -8,12 +8,13 @@ class ProductRepository extends EntityRepository{
 
    public function getProductWithBugs($id){
        return $this->createQueryBuilder('p')
-            ->addSelect('b')
             ->leftJoin('p.bugs', 'b')
+            ->join('b.engineer', 'e')
+            ->join('b.reporter', 'r')
+            ->join('b.products', 'bp')
             ->where('b.id = :id')
             ->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult();
    }
-
 }

@@ -13,7 +13,7 @@ class BugController extends Controller{
         $bugRepo = $em->getRepository('Imie\Entity\Bug');
 
         return $this->render('bug', 'index', [
-            "bugs" => $bugRepo->findAll() // fetch all bugs
+            "bugs" => $bugRepo->getAllBugsEager() // fetch all bugs
         ]);
     }
 
@@ -26,7 +26,7 @@ class BugController extends Controller{
         // If bug can't be found, redirect'
         if(is_null($bug)){
             header('Location: ' . PATH . 'index.php');
-            return;
+            die();
         }
 
         // Change status
@@ -43,6 +43,7 @@ class BugController extends Controller{
         $em->flush();
 
         header('Location: ' . $_SERVER["HTTP_REFERER"]); // Back to previous page
+        die();
     }
 
     // Add form & submission

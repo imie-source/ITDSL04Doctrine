@@ -12,7 +12,7 @@ class UserController extends Controller{
         $userRepo = $em->getRepository('Imie\Entity\User');
 
         return $this->render('user', 'index', [
-            "users" => $userRepo->findAll()
+            "users" => $userRepo->getAllUsersOrdered()
         ]);
         
     }
